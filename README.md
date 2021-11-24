@@ -22,7 +22,7 @@ Once you have your Swift package set up, adding UIExtensions as a dependency is 
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/Alamofire/ui-extensions-swift.git", .upToNextMajor(from: "1.1"))
+    .package(url: "https://github.com/horizontalsystems/ui-extensions-swift.git", .upToNextMajor(from: "1.1"))
 ]
 ```
 
