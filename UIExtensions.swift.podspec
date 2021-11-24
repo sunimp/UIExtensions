@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'UIExtensions.swift'
-  s.module_name      = 'UIExtensions.swift'
+  s.module_name      = 'UIExtensions'
   s.version          = '1.1.1'
   s.summary          = 'Extensions and helpers.'
 
