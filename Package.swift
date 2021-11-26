@@ -3,19 +3,22 @@
 import PackageDescription
 
 let package = Package(
-    name: "UIExtensions",
-    products: [
-        .library(
-            name: "UIExtensions",
-            targets: ["UIExtensions"]
-        ),
-    ],
-    dependencies: [
-    ],
-    targets: [
-        .target(
-            name: "UIExtensions",
-            dependencies: []
-        ),
-    ]
+        name: "UIExtensions",
+        platforms: [
+            .iOS(.v13),
+        ],
+        products: [
+            .library(
+                    name: "UIExtensions",
+                    targets: ["UIExtensions"]
+            ),
+        ],
+        dependencies: [
+        ],
+        targets: [
+            .target(
+                    name: "UIExtensions",
+                    dependencies: []
+            ),
+        ]
 )
