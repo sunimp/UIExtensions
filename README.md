@@ -26,7 +26,7 @@ the `dependencies` value of your `Package.swift`.
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/horizontalsystems/ui-extensions.git", .upToNextMajor(from: "1.1"))
+    .package(url: "https://github.com/horizontalsystems/UIExtensions.git", .upToNextMajor(from: "1.1.1"))
 ]
 ```
 
