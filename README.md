@@ -12,7 +12,7 @@ GUI Extensions and helpers.
 visit their website. To integrate UIExtensions into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
-pod 'UIExtensions.swift'
+pod 'UIExtensions.Swift'
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ the `dependencies` value of your `Package.swift`.
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/horizontalsystems/UIExtensions.git", .upToNextMajor(from: "1.1.1"))
+    .package(url: "https://github.com/horizontalsystems/UIExtensions.Swift.git", .upToNextMajor(from: "1.0.0"))
 ]
 ```
 
