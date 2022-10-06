@@ -15,14 +15,4 @@ extension String {
         return CGSize(width: ceil(size.width), height: ceil(size.height))
     }
 
-    public func stripHexPrefix() -> String {
-        let prefix = "0x"
-
-        if self.hasPrefix(prefix) {
-            return String(self.dropFirst(prefix.count))
-        }
-
-        return self
-    }
-
 }
