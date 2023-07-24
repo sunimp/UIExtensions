@@ -3,15 +3,15 @@ import UIKit
 extension UIEdgeInsets {
 
     public var width: CGFloat {
-        self.left + self.right
+        left + right
     }
 
     public var height: CGFloat {
-        self.top + self.bottom
+        top + bottom
     }
 
     public func add(_ other: UIEdgeInsets) -> UIEdgeInsets {
-        UIEdgeInsets(top: self.top + other.top, left: self.left + other.left, bottom: self.bottom + other.bottom, right: self.right + other.right)
+        UIEdgeInsets(top: top + other.top, left: left + other.left, bottom: bottom + other.bottom, right: right + other.right)
     }
 
 }

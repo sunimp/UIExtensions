@@ -2,32 +2,32 @@ import UIKit
 
 extension UIView {
 
-    public var width: CGFloat {
+    @objc open var width: CGFloat {
         frame.size.width
     }
 
-    public var height: CGFloat {
+    @objc open var height: CGFloat {
         frame.size.height
     }
 
-    public var x: CGFloat {
+    @objc open var x: CGFloat {
         frame.origin.x
     }
 
-    public var y: CGFloat {
+    @objc open var y: CGFloat {
         frame.origin.y
     }
 
-    public var bottom: CGFloat {
+    @objc open var bottom: CGFloat {
         frame.origin.y + frame.size.height
     }
 
-    public var size: CGSize {
+    @objc open var size: CGSize {
         frame.size
     }
 
     @IBInspectable
-    open var cornerRadius: CGFloat {
+    @objc open var cornerRadius: CGFloat {
         get {
             layer.cornerRadius
         }
