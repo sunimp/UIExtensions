@@ -12,9 +12,9 @@ extension UIColor {
     // Usage: UIColor(hex: 0xFC0ACE, alpha: 0.25)
     public convenience init(hex: Int, alpha: CGFloat = 1) {
         self.init(
-            displayP3Red: CGFloat(Int(hex >> 24) & 0xFF) / 255.0,
-            green: CGFloat(Int(hex >> 16) & 0xFF) / 255.0,
-            blue: CGFloat(Int(hex >> 8) & 0xFF) / 255.0,
+            displayP3Red: CGFloat((hex >> 16) & 0xFF) / 255.0,
+            green: CGFloat((hex >> 8) & 0xFF) / 255.0,
+            blue: CGFloat(hex & 0xFF) / 255.0,
             alpha: CGFloat(alpha)
         )
     }
