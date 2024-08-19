@@ -1,17 +1,24 @@
+//
+//  UIColor+.swift
+//  CryptoWallet
+//
+//  Created by Sun on 2024/8/19.
+//
+
 import UIKit
 
 extension UIColor {
 
-    // Usage: UIColor(hex: 0xfc0ace, alpha: 0.25)
-    public convenience init(hex: Int, alpha: Double = 1) {
+    // Usage: UIColor(hex: 0xFC0ACE, alpha: 0.25)
+    public convenience init(hex: Int, alpha: CGFloat = 1) {
         self.init(
-                red: CGFloat((hex >> 16) & 0xff) / 255,
-                green: CGFloat((hex >> 8) & 0xff) / 255,
-                blue: CGFloat(hex & 0xff) / 255,
-                alpha: CGFloat(alpha)
+            displayP3Red: CGFloat(Int(hex >> 24) & 0xFF) / 255.0,
+            green: CGFloat(Int(hex >> 16) & 0xFF) / 255.0,
+            blue: CGFloat(Int(hex >> 8) & 0xFF) / 255.0,
+            alpha: CGFloat(alpha)
         )
     }
-
+    
     public var toHSBColor: UIColor {
         var h: CGFloat = 0, s: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
         getHue(&h, saturation: &s, brightness: &b, alpha: &a)
@@ -24,7 +31,6 @@ extension UIColor {
         getRed(&r1, green: &g1, blue: &b1, alpha: &a1)
         top.getRed(&r2, green: &g2, blue: &b2, alpha: &a2)
 
-//        out = alpha * new + (1 - alpha) * old - standard blending algorithm
         r1 = a2 * r2 + (1 - a2) * r1
         g1 = a2 * g2 + (1 - a2) * g1
         b1 = a2 * b2 + (1 - a2) * b1
