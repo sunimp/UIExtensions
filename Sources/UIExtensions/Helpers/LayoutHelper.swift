@@ -8,8 +8,9 @@
 import UIKit
 
 public class LayoutHelper {
-    public static let instance = LayoutHelper()
-    public static let insetZero: UIEdgeInsets = UIEdgeInsets(top: 0, left: -64, bottom: 0, right: 0) // 44 - max safe area, 20 - max margin
+    
+    public static let shared = LayoutHelper()
+    public static let insetZero: UIEdgeInsets = .only(left: -64)
 
     private init() {}
 
@@ -36,7 +37,7 @@ public class LayoutHelper {
 
     static public func sizeForContainer(size: CGSize?) -> CGSize {
         var size = size ?? UIScreen.main.bounds.size
-        let insets = LayoutHelper.instance.safeInsets(for: nil)
+        let insets = LayoutHelper.shared.safeInsets(for: nil)
         size.width = max(0, size.width - insets.width)
         size.height = max(0, size.height - insets.height)
         return size

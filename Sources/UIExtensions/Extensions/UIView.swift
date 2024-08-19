@@ -8,31 +8,31 @@
 import UIKit
 
 extension UIView {
-
+    
     @objc open var width: CGFloat {
         frame.size.width
     }
-
+    
     @objc open var height: CGFloat {
         frame.size.height
     }
-
+    
     @objc open var x: CGFloat {
         frame.origin.x
     }
-
+    
     @objc open var y: CGFloat {
         frame.origin.y
     }
-
+    
     @objc open var bottom: CGFloat {
         frame.origin.y + frame.size.height
     }
-
+    
     @objc open var size: CGSize {
         frame.size
     }
-
+    
     @IBInspectable
     @objc open var cornerRadius: CGFloat {
         get {
@@ -43,7 +43,7 @@ extension UIView {
             layer.masksToBounds = newValue != 0
         }
     }
-
+    
     @IBInspectable
     open var borderWidth: CGFloat {
         get {
@@ -53,7 +53,7 @@ extension UIView {
             layer.borderWidth = newValue
         }
     }
-
+    
     @IBInspectable
     open var borderColor: UIColor? {
         get {
@@ -64,6 +64,9 @@ extension UIView {
             layer.borderColor = newValue?.cgColor
         }
     }
+}
+
+extension UIView {
 
     public func set(hidden: Bool, animated: Bool = false, duration: TimeInterval = 0.3, completion: ((Bool) -> ())? = nil) {
         if isHidden == hidden {

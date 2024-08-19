@@ -9,6 +9,20 @@ import UIKit
 
 extension UIColor {
 
+    public var hsbaColor: UIColor {
+        var h: CGFloat = 0, s: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+        getHue(&h, saturation: &s, brightness: &b, alpha: &a)
+        return UIColor(hue: h, saturation: s, brightness: b, alpha: a)
+    }
+    
+    public var rgba: (r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat)? {
+        var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+        guard getRed(&r, green: &g, blue: &b, alpha: &a) else {
+            return nil
+        }
+        return (r, g, b, a)
+    }
+
     // Usage: UIColor(hex: 0xFC0ACE, alpha: 0.25)
     public convenience init(hex: Int, alpha: CGFloat = 1) {
         self.init(
@@ -19,12 +33,10 @@ extension UIColor {
         )
     }
     
-    public var toHSBColor: UIColor {
-        var h: CGFloat = 0, s: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
-        getHue(&h, saturation: &s, brightness: &b, alpha: &a)
-        return UIColor(hue: h, saturation: s, brightness: b, alpha: a)
+    public func alpha(_ alpha: CGFloat) -> UIColor {
+        return self.withAlphaComponent(alpha)
     }
-
+    
     public func blend(with top: UIColor) -> UIColor {
         var r1: CGFloat = 0, g1: CGFloat = 0, b1: CGFloat = 0, a1: CGFloat = 0
         var r2: CGFloat = 0, g2: CGFloat = 0, b2: CGFloat = 0, a2: CGFloat = 0

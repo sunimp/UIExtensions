@@ -15,15 +15,15 @@ open class CustomIntensityVisualEffectView: UIVisualEffectView {
     /// - Parameters:
     ///   - effect: visual effect, eg UIBlurEffect(style: .dark)
     ///   - intensity: custom intensity from 0.0 (no effect) to 1.0 (full effect) using linear scale
-
     public init(effect: UIVisualEffect?, intensity: CGFloat) {
         super.init(effect: nil)
         animator = UIViewPropertyAnimator(duration: 1, curve: .linear) { [weak self] in self?.effect = effect }
         animator.fractionComplete = intensity
     }
 
+    @available(*, unavailable)
     required public init?(coder aDecoder: NSCoder) {
-        fatalError()
+        fatalError("init(coder:) has not been implemented")
     }
 
 }

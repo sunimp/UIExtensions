@@ -8,7 +8,8 @@
 import UIKit
 
 open class GradientView: UIView {
-    private let gradientLayer = CAGradientLayer()
+    
+    public let gradientLayer = CAGradientLayer()
 
     private let fromColor: UIColor
     private let toColor: UIColor
@@ -25,9 +26,10 @@ open class GradientView: UIView {
         gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
         layer.addSublayer(gradientLayer)
 
-        updateUI()
+        setup()
     }
 
+    @available(*, unavailable)
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -42,11 +44,10 @@ open class GradientView: UIView {
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
 
-        updateUI()
+        setup()
     }
 
-    private func updateUI() {
+    open func setup() {
         gradientLayer.colors = [fromColor.cgColor, toColor.cgColor]
     }
-
 }

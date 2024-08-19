@@ -14,13 +14,14 @@ public protocol RespondViewDelegate: AnyObject {
 }
 
 public class RespondView: UIView {
+    
     private static let touchableAreaInset: CGFloat = 50
     public weak var delegate: RespondViewDelegate?
 
     public var handleTouch: (() -> ())?
 
     private var firstTouch: UITouch?
-    private var began = false
+    private var isBegan: Bool = false
 
     private var isValidTouch: Bool {
         guard let touch = firstTouch else {
@@ -35,13 +36,11 @@ public class RespondView: UIView {
         delegate?.touchBegan()
 
         firstTouch = touches.first
-        began = true
+        isBegan = true
 
         if delegate?.touchTransparent ?? true {
             super.touchesBegan(touches, with: event)
         }
-
-
     }
 
     override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -50,7 +49,7 @@ public class RespondView: UIView {
             handleTouch?()
         }
 
-        began = false
+        isBegan = false
         firstTouch = nil
 
         if delegate?.touchTransparent ?? true {
@@ -62,9 +61,9 @@ public class RespondView: UIView {
         super.touchesMoved(touches, with: event)
 
         let valid = isValidTouch
-        if (began && !valid) || (!began && valid) {
-            began = isValidTouch
-            if began {
+        if (isBegan && !valid) || (!isBegan && valid) {
+            isBegan = isValidTouch
+            if isBegan {
                 delegate?.touchBegan()
             } else {
                 delegate?.touchEnd()
@@ -75,7 +74,7 @@ public class RespondView: UIView {
     open override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         delegate?.touchEnd()
 
-        began = false
+        isBegan = false
         firstTouch = nil
 
         super.touchesCancelled(touches, with: event)

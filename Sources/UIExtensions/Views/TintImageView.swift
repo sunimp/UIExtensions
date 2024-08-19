@@ -8,26 +8,29 @@
 import UIKit
 
 public class TintImageView: UIImageView, RespondViewDelegate {
+    
     public var touchTransparent: Bool { return false }
 
     private var _tintColor: UIColor?
     private var selectedTintColor: UIColor?
-    private var tintMode = false
+    private var isTintMode = false
+    
     public override var tintColor: UIColor! {
         get {
             return super.tintColor
         }
         set {
-            tintMode = newValue != nil
+            isTintMode = newValue != nil
             super.tintColor = newValue
         }
     }
+    
     public override var image: UIImage? {
         get {
             return super.image
         }
         set {
-            guard tintMode else {
+            guard isTintMode else {
                 super.image = newValue
                 return
             }
@@ -50,8 +53,9 @@ public class TintImageView: UIImageView, RespondViewDelegate {
         self.highlightedImage = selectedImage
     }
 
+    @available(*, unavailable)
     required public init?(coder aDecoder: NSCoder) {
-        fatalError("not implemented")
+        fatalError("init(coder:) has not been implemented")
     }
 
     public func touchBegan() {

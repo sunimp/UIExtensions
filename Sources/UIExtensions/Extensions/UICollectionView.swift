@@ -1,6 +1,5 @@
 //
 //  UICollectionView+.swift
-//  CryptoWallet
 //
 //  Created by Sun on 2024/8/19.
 //
@@ -8,7 +7,8 @@
 import UIKit
 
 public enum FlowSupplementaryKind {
-    case header, footer
+    case header
+    case footer
 }
 
 extension UICollectionView {
