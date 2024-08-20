@@ -19,9 +19,9 @@ extension UIView {
         public var startPoint: CGPoint {
             switch self {
             case .topToBottom:
-                return CGPoint(x: 0, y: 0.5)
-            case .leftToRight:
                 return CGPoint(x: 0.5, y: 0)
+            case .leftToRight:
+                return CGPoint(x: 0, y: 0.5)
             case .topLeftToBottomRight:
                 return CGPoint(x: 0, y: 0)
             case .topRightToBottomLeft:
@@ -32,9 +32,9 @@ extension UIView {
         public var endPoint: CGPoint {
             switch self {
             case .topToBottom:
-                return CGPoint(x: 1.0, y: 0.5)
-            case .leftToRight:
                 return CGPoint(x: 0.5, y: 1.0)
+            case .leftToRight:
+                return CGPoint(x: 1.0, y: 0.5)
             case .topLeftToBottomRight:
                 return CGPoint(x: 1.0, y: 1.0)
             case .topRightToBottomLeft:
