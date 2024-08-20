@@ -9,9 +9,9 @@ import UIKit
 extension UIButton {
     
     public func setBackgroundColor(
-        color: UIColor,
+        _ color: UIColor,
         gradient: (colors: [UIColor], height: CGFloat)? = nil,
-        forState state: UIControl.State
+        for state: UIControl.State
     ) {
         let height = gradient?.height ?? 1
         var gradientLayer: CAGradientLayer?
