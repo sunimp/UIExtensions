@@ -9,6 +9,44 @@ import UIKit
 
 extension UIView {
     
+    public enum GradientDirection {
+        
+        case topToBottom
+        case leftToRight
+        case topLeftToBottomRight
+        case topRightToBottomLeft
+        
+        public var startPoint: CGPoint {
+            switch self {
+            case .topToBottom:
+                return CGPoint(x: 0, y: 0.5)
+            case .leftToRight:
+                return CGPoint(x: 0.5, y: 0)
+            case .topLeftToBottomRight:
+                return CGPoint(x: 0, y: 0)
+            case .topRightToBottomLeft:
+                return CGPoint(x: 1.0, y: 0)
+            }
+        }
+        
+        public var endPoint: CGPoint {
+            switch self {
+            case .topToBottom:
+                return CGPoint(x: 1.0, y: 0.5)
+            case .leftToRight:
+                return CGPoint(x: 0.5, y: 1.0)
+            case .topLeftToBottomRight:
+                return CGPoint(x: 1.0, y: 1.0)
+            case .topRightToBottomLeft:
+                return CGPoint(x: 0, y: 1.0)
+            }
+        }
+    }
+    
+}
+
+extension UIView {
+    
     @objc open var width: CGFloat {
         frame.size.width
     }

@@ -10,24 +10,25 @@ extension UIButton {
     
     public func setBackgroundColor(
         _ color: UIColor,
-        gradient: (colors: [UIColor], height: CGFloat)? = nil,
+        gradient: (colors: [UIColor], direction: UIView.GradientDirection)? = nil,
         for state: UIControl.State
     ) {
-        let height = gradient?.height ?? 1
         var gradientLayer: CAGradientLayer?
 
         if let gradient = gradient {
             gradientLayer = CAGradientLayer()
             gradientLayer?.locations = [0.0, 1.0]
             gradientLayer?.colors = gradient.colors.map { $0.cgColor }
-            gradientLayer?.frame = CGRect(x: 0, y: 0, width: 1, height: height)
+            gradientLayer?.startPoint = gradient.direction.startPoint
+            gradientLayer?.endPoint = gradient.direction.endPoint
+            gradientLayer?.frame = CGRect(x: 0, y: 0, width: 1, height: 1)
         }
         
-        let renderer = UIGraphicsImageRenderer(size: CGSize(width: 1, height: height))
+        let renderer = UIGraphicsImageRenderer(size: CGSize(width: 1, height: 1))
         let colorImage = renderer.image { context in
             let cgContext = context.cgContext
             cgContext.setFillColor(color.cgColor)
-            cgContext.fill(CGRect(x: 0, y: 0, width: 1, height: height))
+            cgContext.fill(CGRect(x: 0, y: 0, width: 1, height: 1))
             gradientLayer?.render(in: cgContext)
         }
         setBackgroundImage(colorImage, for: state)
