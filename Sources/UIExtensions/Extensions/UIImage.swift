@@ -45,7 +45,7 @@ extension UIImage {
         guard size.width > 0 && size.height > 0 else {
             return self
         }
-        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        let rect = CGRect(origin: .zero, size: size)
         let format = UIGraphicsImageRendererFormat.default()
         let renderer = UIGraphicsImageRenderer(size: size, format: format)
         let image = renderer.image { context in
@@ -61,5 +61,15 @@ extension UIImage {
             self.draw(in: rect)
         }
         return image
+    }
+    
+    public func tint(_ color: UIColor) -> UIImage {
+        let renderer = UIGraphicsImageRenderer(size: self.size)
+        return renderer.image { context in
+            let rect = CGRect(origin: .zero, size: self.size)
+            color.set()
+            context.fill(rect)
+            self.draw(in: rect, blendMode: .destinationIn, alpha: 1.0)
+        }
     }
 }
