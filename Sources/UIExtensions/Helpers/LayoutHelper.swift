@@ -1,6 +1,6 @@
 //
 //  LayoutHelper.swift
-//  CryptoWallet
+//  UIExtensions
 //
 //  Created by Sun on 2024/8/19.
 //
@@ -14,28 +14,16 @@ public class LayoutHelper {
 
     private init() {}
 
+    public var contentMarginWidth: CGFloat {
+        return marginContentInset * 2 + safeInsets().width
+    }
+
     public lazy var marginContentInset: CGFloat = {
         let width = min(UIScreen.main.bounds.width, UIScreen.main.bounds.height)
         return width < 385 || width > 760 ? 15 : 20
     }()
 
-    public func safeInsets(for view: UIView? = nil) -> UIEdgeInsets {
-        if #available(iOS 11, *) {
-            if let view = view {
-                return view.safeAreaInsets
-            } else {
-                return UIApplication.shared.windows.filter { $0.isKeyWindow }.first?.safeAreaInsets ?? UIEdgeInsets.zero
-            }
-        } else {
-            return UIEdgeInsets.zero
-        }
-    }
-
-    public var contentMarginWidth: CGFloat {
-        return marginContentInset * 2 + safeInsets().width
-    }
-
-    static public func sizeForContainer(size: CGSize?) -> CGSize {
+    public static func sizeForContainer(size: CGSize?) -> CGSize {
         var size = size ?? UIScreen.main.bounds.size
         let insets = LayoutHelper.shared.safeInsets(for: nil)
         size.width = max(0, size.width - insets.width)
@@ -62,6 +50,18 @@ public class LayoutHelper {
         }
 
         return CGSize(width: floor(width), height: floor(height))
+    }
+
+    public func safeInsets(for view: UIView? = nil) -> UIEdgeInsets {
+        if #available(iOS 11, *) {
+            if let view = view {
+                return view.safeAreaInsets
+            } else {
+                return UIApplication.shared.windows.filter { $0.isKeyWindow }.first?.safeAreaInsets ?? UIEdgeInsets.zero
+            }
+        } else {
+            return UIEdgeInsets.zero
+        }
     }
 
 }
