@@ -53,7 +53,7 @@ extension UIWindow {
         }
     }
     
-    /// Active window statusBar isHidden
+    /// Key Window isStatusBarHidden
     public static var isStatusBarHidden: Bool {
         if let statusBarManager = self.keyWindow?.windowScene?.statusBarManager {
             return statusBarManager.isStatusBarHidden
