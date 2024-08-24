@@ -11,22 +11,29 @@ open class GradientView: UIView {
     
     public let gradientLayer = CAGradientLayer()
 
-    private let fromColor: UIColor
-    private let toColor: UIColor
-    private let gradientHeight: CGFloat
+    private var fromColor: UIColor
+    private var toColor: UIColor
+    private var direction: GradientDirection
+    private var length: CGFloat?
 
-    public init(gradientHeight: CGFloat, fromColor: UIColor, toColor: UIColor) {
-        self.gradientHeight = gradientHeight
+    public init(
+        fromColor: UIColor,
+        toColor: UIColor,
+        direction: GradientDirection = .leftToRight,
+        length: CGFloat? = nil
+    ) {
         self.fromColor = fromColor
         self.toColor = toColor
+        self.direction = direction
+        self.length = length
 
         super.init(frame: .zero)
 
-        gradientLayer.locations = [0, 1]
-        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.startPoint = direction.startPoint
         layer.addSublayer(gradientLayer)
 
-        setup()
+        updateUITheme()
     }
 
     @available(*, unavailable)
@@ -36,18 +43,44 @@ open class GradientView: UIView {
 
     override public func layoutSubviews() {
         super.layoutSubviews()
+        
         gradientLayer.frame = bounds
-        let endPosition: CGFloat = gradientHeight / bounds.height
-        gradientLayer.endPoint = CGPoint(x: 0.5, y: endPosition)
+        var endPoint = direction.endPoint
+        if let length = self.length {
+            switch direction {
+            case .leftToRight:
+                endPoint.x = length / bounds.width
+                
+            case .topToBottom:
+                endPoint.y = length / bounds.height
+            }
+        }
+        gradientLayer.endPoint = endPoint
     }
 
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
 
-        setup()
+        updateUITheme()
     }
 
-    open func setup() {
+    open func updateUITheme() {
         gradientLayer.colors = [fromColor.cgColor, toColor.cgColor]
+    }
+    
+    open func updateGradient(
+        fromColor: UIColor,
+        toColor: UIColor,
+        direction: GradientDirection = .leftToRight,
+        length: CGFloat? = nil
+    ) {
+        self.fromColor = fromColor
+        self.toColor = toColor
+        self.direction = direction
+        self.length = length
+        
+        gradientLayer.startPoint = direction.startPoint
+        updateUITheme()
+        setNeedsLayout()
     }
 }
