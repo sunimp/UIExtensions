@@ -9,16 +9,12 @@ import UIKit
 
 extension UIEdgeInsets {
     
-    public var width: CGFloat {
-        left + right
+    public var horizontal: CGFloat {
+        return self.left + self.right
     }
     
-    public var height: CGFloat {
-        top + bottom
-    }
-    
-    public func add(_ other: UIEdgeInsets) -> UIEdgeInsets {
-        UIEdgeInsets(top: top + other.top, left: left + other.left, bottom: bottom + other.bottom, right: right + other.right)
+    public var vertical: CGFloat {
+        return self.top + self.bottom
     }
     
     public static func only(
@@ -41,11 +37,12 @@ extension UIEdgeInsets {
         return UIEdgeInsets(top: value, left: value, bottom: value, right: value)
     }
     
-    public var horizontal: CGFloat {
-        return self.left + self.right
-    }
-    
-    public var vertical: CGFloat {
-        return self.top + self.bottom
+    public func add(_ other: UIEdgeInsets) -> UIEdgeInsets {
+        UIEdgeInsets(
+            top: self.top + other.top,
+            left: self.left + other.left,
+            bottom: self.bottom + other.bottom,
+            right: self.right + other.right
+        )
     }
 }

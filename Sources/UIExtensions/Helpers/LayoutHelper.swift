@@ -10,12 +10,11 @@ import UIKit
 public class LayoutHelper {
     
     public static let shared = LayoutHelper()
-    public static let insetZero: UIEdgeInsets = .only(left: -64)
 
     private init() {}
 
     public var contentMarginWidth: CGFloat {
-        return marginContentInset * 2 + safeInsets().width
+        return marginContentInset * 2 + safeInsets().horizontal
     }
 
     public lazy var marginContentInset: CGFloat = {
@@ -26,12 +25,19 @@ public class LayoutHelper {
     public static func sizeForContainer(size: CGSize?) -> CGSize {
         var size = size ?? UIScreen.main.bounds.size
         let insets = LayoutHelper.shared.safeInsets(for: nil)
-        size.width = max(0, size.width - insets.width)
-        size.height = max(0, size.height - insets.height)
+        size.width = max(0, size.width - insets.horizontal)
+        size.height = max(0, size.height - insets.vertical)
         return size
     }
 
-    public func getSingleMediaSize(width: Int, height: Int, minHeight: CGFloat = 50, maxHeight: CGFloat = 150, minWidth: CGFloat, maxWidth: CGFloat) -> CGSize {
+    public func getSingleMediaSize(
+        width: Int,
+        height: Int,
+        minHeight: CGFloat = 50,
+        maxHeight: CGFloat = 150,
+        minWidth: CGFloat,
+        maxWidth: CGFloat
+    ) -> CGSize {
         let imageWidth = width > 0 ? CGFloat(abs(width)) / UIScreen.main.scale : minWidth
         let imageHeight = height > 0 ? CGFloat(abs(height)) / UIScreen.main.scale : minHeight
 
@@ -53,15 +59,10 @@ public class LayoutHelper {
     }
 
     public func safeInsets(for view: UIView? = nil) -> UIEdgeInsets {
-        if #available(iOS 11, *) {
-            if let view = view {
-                return view.safeAreaInsets
-            } else {
-                return UIApplication.shared.windows.filter { $0.isKeyWindow }.first?.safeAreaInsets ?? UIEdgeInsets.zero
-            }
+        if let view = view {
+            return view.safeAreaInsets
         } else {
-            return UIEdgeInsets.zero
+            return UIWindow.keyWindow?.safeAreaInsets ?? .zero
         }
     }
-
 }
