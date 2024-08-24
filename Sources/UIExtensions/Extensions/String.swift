@@ -9,19 +9,20 @@ import UIKit
 
 extension String {
 
-    public func height(forContainerWidth containerWidth: CGFloat, font: UIFont) -> CGFloat {
-        size(containerWidth: containerWidth, font: font).height
+    public func height(forContainerWidth containerWidth: CGFloat, font: UIFont, roundUp: Bool = true) -> CGFloat {
+        size(containerWidth: containerWidth, font: font, roundUp: roundUp).height
     }
     
-    public func width(forContainerHeight containerHeight: CGFloat, font: UIFont) -> CGFloat {
-        size(containerHeight: containerHeight, font: font).width
+    public func width(forContainerHeight containerHeight: CGFloat, font: UIFont, roundUp: Bool = true) -> CGFloat {
+        size(containerHeight: containerHeight, font: font, roundUp: roundUp).width
     }
     
     public func size(
         containerWidth: CGFloat = .greatestFiniteMagnitude,
         containerHeight: CGFloat = .greatestFiniteMagnitude,
         font: UIFont,
-        maxLines: Int = 0
+        maxLines: Int = 0,
+        roundUp: Bool = true
     ) -> CGSize {
         guard !self.isEmpty else {
             return .zero
@@ -43,6 +44,9 @@ extension String {
         
         layoutManager.glyphRange(for: textContainer)
         let textBounds = layoutManager.usedRect(for: textContainer)
+        if roundUp {
+            return CGSize(width: ceil(textBounds.size.width), height: ceil(textBounds.size.width))
+        }
         return textBounds.size
     }
 }
