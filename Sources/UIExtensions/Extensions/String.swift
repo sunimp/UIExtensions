@@ -45,7 +45,7 @@ extension String {
         layoutManager.glyphRange(for: textContainer)
         let textBounds = layoutManager.usedRect(for: textContainer)
         if roundUp {
-            return CGSize(width: ceil(textBounds.size.width), height: ceil(textBounds.size.width))
+            return CGSize(width: ceil(textBounds.size.width), height: ceil(textBounds.size.height))
         }
         return textBounds.size
     }
