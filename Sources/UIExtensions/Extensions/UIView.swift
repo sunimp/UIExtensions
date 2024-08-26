@@ -191,6 +191,16 @@ extension UIView {
             layer.shadowPath = newValue
         }
     }
+    
+    @objc
+    open var masksToBounds: Bool {
+        get {
+            layer.masksToBounds
+        }
+        set {
+            layer.masksToBounds = newValue
+        }
+    }
 }
 
 extension UIView {
@@ -285,12 +295,12 @@ extension UIView {
     
     public func setShadow(
         color: UIColor,
-        position: ShadowPosition = .all(3),
+        position: ShadowPosition = .all(10),
         opacity: Float = 1
     ) {
         shadowColor = color
         shadowOpacity = opacity
-        layer.masksToBounds = position.radius > 0
+        masksToBounds = position.radius <= 0
         shadowRadius = position.radius
         shadowOffset = position.offset
     }
