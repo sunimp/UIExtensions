@@ -8,7 +8,7 @@ GUI extensions and helpers.
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/horizontalsystems/UIExtensions.Swift.git", .upToNextMajor(from: "1.0.0"))
+    .package(url: "https://github.com/sunimp/UIExtensions.Swift.git", .upToNextMajor(from: "1.2.0"))
 ]
 ```
 
