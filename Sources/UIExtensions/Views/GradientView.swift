@@ -37,7 +37,7 @@ open class GradientView: UIView {
     }
 
     @available(*, unavailable)
-    required public init?(coder aDecoder: NSCoder) {
+    public required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -46,7 +46,7 @@ open class GradientView: UIView {
         
         gradientLayer.frame = bounds
         var endPoint = direction.endPoint
-        if let length = self.length {
+        if let length {
             switch direction {
             case .leftToRight:
                 endPoint.x = length / bounds.width
@@ -58,7 +58,7 @@ open class GradientView: UIView {
         gradientLayer.endPoint = endPoint
     }
 
-    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
 
         updateUITheme()

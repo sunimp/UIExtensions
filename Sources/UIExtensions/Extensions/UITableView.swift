@@ -10,7 +10,10 @@ import UIKit
 extension UITableView {
 
     public func registerCell(forNib nibClass: UITableViewCell.Type) {
-        register(UINib(nibName: String(describing: nibClass), bundle: Bundle(for: nibClass)), forCellReuseIdentifier: String(describing: nibClass))
+        register(
+            UINib(nibName: String(describing: nibClass), bundle: Bundle(for: nibClass)),
+            forCellReuseIdentifier: String(describing: nibClass)
+        )
     }
 
     public func registerCell(forClass anyClass: UITableViewCell.Type) {
@@ -18,7 +21,10 @@ extension UITableView {
     }
 
     public func registerHeaderFooter(forNib nibClass: UITableViewHeaderFooterView.Type) {
-        register(UINib(nibName: String(describing: nibClass), bundle: Bundle(for: nibClass)), forHeaderFooterViewReuseIdentifier: String(describing: nibClass))
+        register(
+            UINib(nibName: String(describing: nibClass), bundle: Bundle(for: nibClass)),
+            forHeaderFooterViewReuseIdentifier: String(describing: nibClass)
+        )
     }
 
     public func registerHeaderFooter(forClass anyClass: UITableViewHeaderFooterView.Type) {
@@ -27,8 +33,8 @@ extension UITableView {
 
     public func deselectCell(withCoordinator coordinator: UIViewControllerTransitionCoordinator?, animated: Bool) {
         if let indexPath = indexPathForSelectedRow {
-            if let coordinator = coordinator {
-                coordinator.animate(alongsideTransition: { [weak self] context in
+            if let coordinator {
+                coordinator.animate(alongsideTransition: { [weak self] _ in
                     self?.deselectRow(at: indexPath, animated: animated)
                 }, completion: { [weak self] context in
                     if context.isCancelled {

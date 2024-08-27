@@ -11,10 +11,10 @@ public class LayoutHelper {
     
     public static let shared = LayoutHelper()
 
-    private init() {}
+    private init() { }
 
     public var contentMarginWidth: CGFloat {
-        return marginContentInset * 2 + safeInsets().horizontal
+        marginContentInset * 2 + safeInsets().horizontal
     }
 
     public lazy var marginContentInset: CGFloat = {
@@ -59,10 +59,10 @@ public class LayoutHelper {
     }
 
     public func safeInsets(for view: UIView? = nil) -> UIEdgeInsets {
-        if let view = view {
-            return view.safeAreaInsets
+        if let view {
+            view.safeAreaInsets
         } else {
-            return UIWindow.keyWindow?.safeAreaInsets ?? .zero
+            UIWindow.keyWindow?.safeAreaInsets ?? .zero
         }
     }
 }

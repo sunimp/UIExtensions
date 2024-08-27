@@ -24,7 +24,7 @@ extension String {
         maxLines: Int = 0,
         roundUp: Bool = true
     ) -> CGSize {
-        guard !self.isEmpty else {
+        guard !isEmpty else {
             return .zero
         }
         let textStorage = NSTextStorage(string: self)

@@ -19,18 +19,18 @@ extension UIView {
         public var startPoint: CGPoint {
             switch self {
             case .topToBottom:
-                return CGPoint(x: 0.5, y: 0)
+                CGPoint(x: 0.5, y: 0)
             case .leftToRight:
-                return CGPoint(x: 0, y: 0.5)
+                CGPoint(x: 0, y: 0.5)
             }
         }
         
         public var endPoint: CGPoint {
             switch self {
             case .topToBottom:
-                return CGPoint(x: 0.5, y: 1.0)
+                CGPoint(x: 0.5, y: 1.0)
             case .leftToRight:
-                return CGPoint(x: 1.0, y: 0.5)
+                CGPoint(x: 1.0, y: 0.5)
             }
         }
     }
@@ -47,30 +47,30 @@ extension UIView {
         var radius: CGFloat {
             switch self {
             case .top(let value):
-                return value
+                value
             case .left(let value):
-                return value
+                value
             case .bottom(let value):
-                return value
+                value
             case .right(let value):
-                return value
+                value
             case .all(let value):
-                return value
+                value
             }
         }
         
         var offset: CGSize {
             switch self {
             case .top(let value):
-                return CGSize(width: 0, height: -value)
+                CGSize(width: 0, height: -value)
             case .left(let value):
-                return CGSize(width: -value, height: 0)
+                CGSize(width: -value, height: 0)
             case .bottom(let value):
-                return CGSize(width: 0, height: value)
+                CGSize(width: 0, height: value)
             case .right(let value):
-                return CGSize(width: value, height: 0)
+                CGSize(width: value, height: 0)
             case .all:
-                return .zero
+                .zero
             }
         }
     }
@@ -244,7 +244,7 @@ extension UIView {
         CATransaction.commit()
     }
     
-    // drawing on context methods
+    /// drawing on context methods
     public func createRoundedRectPath(for rect: CGRect, radius: CGFloat) -> CGMutablePath {
         let path = CGMutablePath()
         
@@ -286,7 +286,7 @@ extension UIView {
                 direction: direction,
                 length: length
             )
-            self.insertSubview(view, at: 0)
+            insertSubview(view, at: 0)
             view.snp.makeConstraints { maker in
                 maker.edges.equalToSuperview()
             }

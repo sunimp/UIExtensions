@@ -42,13 +42,13 @@ extension UIImage {
     }
     
     public func resize(_ size: CGSize, cornerRadius: CGFloat? = nil) -> UIImage? {
-        guard size.width > 0 && size.height > 0 else {
+        guard size.width > 0, size.height > 0 else {
             return self
         }
         let rect = CGRect(origin: .zero, size: size)
         let format = UIGraphicsImageRendererFormat.default()
         let renderer = UIGraphicsImageRenderer(size: size, format: format)
-        let image = renderer.image { context in
+        let image = renderer.image { _ in
             if let cornerRadius, cornerRadius > 0 {
                 let path = UIBezierPath(
                     roundedRect: rect,
@@ -64,7 +64,7 @@ extension UIImage {
     }
     
     public func tint(_ color: UIColor) -> UIImage {
-        let renderer = UIGraphicsImageRenderer(size: self.size)
+        let renderer = UIGraphicsImageRenderer(size: size)
         return renderer.image { context in
             let rect = CGRect(origin: .zero, size: self.size)
             color.set()

@@ -19,7 +19,7 @@ extension CGFloat {
     }
     
     public func centre(_ other: CGFloat) -> CGFloat {
-        return ((self - other) / 2.0).flat
+        ((self - other) / 2.0).flat
     }
 }
 
@@ -29,18 +29,18 @@ extension CGSize {
         width: CGFloat = 0.0,
         height: CGFloat = 0.0
     ) -> CGSize {
-        return CGSize(width: width, height: height)
+        CGSize(width: width, height: height)
     }
     
     public static func all(_ value: CGFloat) -> CGSize {
-        return CGSize(width: value, height: value)
+        CGSize(width: value, height: value)
     }
 }
 
 extension CGRect {
     
     public var flatted: CGRect {
-        return CGRect(
+        CGRect(
             x: origin.x.flat,
             y: origin.y.flat,
             width: size.width.flat,
@@ -68,14 +68,14 @@ extension CGRect {
         width: CGFloat = 0.0,
         height: CGFloat = 0.0
     ) -> CGRect {
-        return only(width: width, height: height)
+        only(width: width, height: height)
     }
     
     public static func only(
         origin: CGPoint = .zero,
         size: CGSize = .zero
     ) -> CGRect {
-        return CGRect(origin: origin, size: size)
+        CGRect(origin: origin, size: size)
     }
     
     public static func only(
@@ -84,7 +84,7 @@ extension CGRect {
         width: CGFloat = 0.0,
         height: CGFloat = 0.0
     ) -> CGRect {
-        return CGRect(x: x, y: y, width: width, height: height)
+        CGRect(x: x, y: y, width: width, height: height)
     }
 }
 
@@ -94,11 +94,11 @@ extension CGVector {
         dx: CGFloat = 0.0,
         dy: CGFloat = 0.0
     ) -> CGVector {
-        return CGVector(dx: dx, dy: dy)
+        CGVector(dx: dx, dy: dy)
     }
     
     public static func all(_ value: CGFloat) -> CGVector {
-        return CGVector(dx: value, dy: value)
+        CGVector(dx: value, dy: value)
     }
     
 }
@@ -106,19 +106,19 @@ extension CGVector {
 extension UIEdgeInsets {
     
     public var horizontal: CGFloat {
-        return self.left + self.right
+        left + right
     }
     
     public var vertical: CGFloat {
-        return self.top + self.bottom
+        top + bottom
     }
     
     public func add(_ other: UIEdgeInsets) -> UIEdgeInsets {
-        return UIEdgeInsets(
-            top: self.top + other.top,
-            left: self.left + other.left,
-            bottom: self.bottom + other.bottom,
-            right: self.right + other.right
+        UIEdgeInsets(
+            top: top + other.top,
+            left: left + other.left,
+            bottom: bottom + other.bottom,
+            right: right + other.right
         )
     }
     
@@ -128,18 +128,18 @@ extension UIEdgeInsets {
         bottom: CGFloat = 0.0,
         right: CGFloat = 0.0
     ) -> UIEdgeInsets {
-        return UIEdgeInsets(top: top, left: left, bottom: bottom, right: right)
+        UIEdgeInsets(top: top, left: left, bottom: bottom, right: right)
     }
     
     public static func symmetric(
         vertical: CGFloat = 0.0,
         horizontal: CGFloat = 0.0
     ) -> UIEdgeInsets {
-        return UIEdgeInsets(top: vertical, left: horizontal, bottom: vertical, right: horizontal)
+        UIEdgeInsets(top: vertical, left: horizontal, bottom: vertical, right: horizontal)
     }
     
     public static func all(_ value: CGFloat) -> UIEdgeInsets {
-        return UIEdgeInsets(top: value, left: value, bottom: value, right: value)
+        UIEdgeInsets(top: value, left: value, bottom: value, right: value)
     }
 }
 

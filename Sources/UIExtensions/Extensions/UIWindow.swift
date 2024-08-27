@@ -46,19 +46,19 @@ extension UIWindow {
     
     /// Key Window statusBarStyle
     public static var statusBarStyle: UIStatusBarStyle {
-        if let statusBarManager = self.keyWindow?.windowScene?.statusBarManager {
-            return statusBarManager.statusBarStyle
+        if let statusBarManager = keyWindow?.windowScene?.statusBarManager {
+            statusBarManager.statusBarStyle
         } else {
-            return .default
+            .default
         }
     }
     
     /// Key Window isStatusBarHidden
     public static var isStatusBarHidden: Bool {
-        if let statusBarManager = self.keyWindow?.windowScene?.statusBarManager {
-            return statusBarManager.isStatusBarHidden
+        if let statusBarManager = keyWindow?.windowScene?.statusBarManager {
+            statusBarManager.isStatusBarHidden
         } else {
-            return false
+            false
         }
     }
 }

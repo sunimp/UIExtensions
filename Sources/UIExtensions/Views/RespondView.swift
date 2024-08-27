@@ -7,11 +7,15 @@
 
 import UIKit
 
+// MARK: - RespondViewDelegate
+
 public protocol RespondViewDelegate: AnyObject {
     var touchTransparent: Bool { get }
     func touchBegan()
     func touchEnd()
 }
+
+// MARK: - RespondView
 
 public class RespondView: UIView {
     
@@ -21,18 +25,18 @@ public class RespondView: UIView {
     public var handleTouch: (() -> ())?
 
     private var firstTouch: UITouch?
-    private var isBegan: Bool = false
+    private var isBegan = false
 
     private var isValidTouch: Bool {
         guard let touch = firstTouch else {
             return false
         }
 
-        let touchArea = self.bounds.insetBy(dx: -RespondView.touchableAreaInset, dy: -RespondView.touchableAreaInset)
+        let touchArea = bounds.insetBy(dx: -RespondView.touchableAreaInset, dy: -RespondView.touchableAreaInset)
         return touchArea.contains(touch.location(in: self))
     }
 
-    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         delegate?.touchBegan()
 
         firstTouch = touches.first
@@ -57,7 +61,7 @@ public class RespondView: UIView {
         }
     }
 
-    public override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override public func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesMoved(touches, with: event)
 
         let valid = isValidTouch
@@ -71,7 +75,7 @@ public class RespondView: UIView {
         }
     }
 
-    open override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override open func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         delegate?.touchEnd()
 
         isBegan = false

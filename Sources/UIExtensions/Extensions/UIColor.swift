@@ -34,7 +34,7 @@ extension UIColor {
     }
     
     public func alpha(_ alpha: CGFloat) -> UIColor {
-        return self.withAlphaComponent(alpha)
+        withAlphaComponent(alpha)
     }
     
     public func blend(with top: UIColor) -> UIColor {

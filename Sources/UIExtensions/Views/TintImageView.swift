@@ -9,15 +9,15 @@ import UIKit
 
 public class TintImageView: UIImageView, RespondViewDelegate {
     
-    public var touchTransparent: Bool { return false }
+    public var touchTransparent: Bool { false }
 
     private var _tintColor: UIColor?
     private var selectedTintColor: UIColor?
     private var isTintMode = false
     
-    public override var tintColor: UIColor! {
+    override public var tintColor: UIColor! {
         get {
-            return super.tintColor
+            super.tintColor
         }
         set {
             isTintMode = newValue != nil
@@ -25,9 +25,9 @@ public class TintImageView: UIImageView, RespondViewDelegate {
         }
     }
     
-    public override var image: UIImage? {
+    override public var image: UIImage? {
         get {
-            return super.image
+            super.image
         }
         set {
             guard isTintMode else {
@@ -50,11 +50,11 @@ public class TintImageView: UIImageView, RespondViewDelegate {
 
     public init(image: UIImage?, selectedImage: UIImage?) {
         super.init(image: image)
-        self.highlightedImage = selectedImage
+        highlightedImage = selectedImage
     }
 
     @available(*, unavailable)
-    required public init?(coder aDecoder: NSCoder) {
+    public required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
