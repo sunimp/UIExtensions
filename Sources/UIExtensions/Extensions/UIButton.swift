@@ -14,8 +14,7 @@ extension UIButton {
         gradient: (colors: [UIColor], direction: UIView.GradientDirection)? = nil,
         for state: UIControl.State
     ) {
-        var gradientLayer: CAGradientLayer? = nil
-
+        var gradientLayer: CAGradientLayer?
         if let gradient {
             gradientLayer = CAGradientLayer()
             gradientLayer?.locations = [0.0, 1.0]

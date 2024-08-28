@@ -205,7 +205,7 @@ extension UIView {
 
 extension UIView {
     
-    public func set(hidden: Bool, animated: Bool = false, duration: TimeInterval = 0.3, completion: ((Bool) -> ())? = nil) {
+    public func set(hidden: Bool, animated: Bool = false, duration: TimeInterval = 0.3, completion: ((Bool) -> Void)? = nil) {
         if isHidden == hidden {
             return
         }

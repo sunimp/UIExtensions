@@ -22,7 +22,7 @@ public class RespondView: UIView {
     private static let touchableAreaInset: CGFloat = 50
     public weak var delegate: RespondViewDelegate?
 
-    public var handleTouch: (() -> ())?
+    public var handleTouch: (() -> Void)?
 
     private var firstTouch: UITouch?
     private var isBegan = false
