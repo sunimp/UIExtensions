@@ -1,14 +1,17 @@
 //
 //  CustomIntensityVisualEffectView.swift
-//  UIExtensions
 //
-//  Created by Sun on 2024/8/19.
+//  Created by Sun on 2021/11/24.
 //
 
 import UIKit
 
 open class CustomIntensityVisualEffectView: UIVisualEffectView {
+    // MARK: Properties
+
     private var animator: UIViewPropertyAnimator!
+
+    // MARK: Lifecycle
 
     /// Create visual effect view with given effect and its intensity
     ///
@@ -25,5 +28,4 @@ open class CustomIntensityVisualEffectView: UIVisualEffectView {
     public required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
 }

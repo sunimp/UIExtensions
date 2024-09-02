@@ -1,8 +1,7 @@
 //
-//  IDeinitDelegate.swift
-//  UIExtensions
+//  Protocols.swift
 //
-//  Created by Sun on 2024/8/19.
+//  Created by Sun on 2023/3/27.
 //
 
 import Foundation

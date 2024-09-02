@@ -1,8 +1,7 @@
 //
-//  UIView+.swift
-//  UIExtensions
+//  UIView.swift
 //
-//  Created by Sun on 2024/8/19.
+//  Created by Sun on 2021/11/24.
 //
 
 import UIKit
@@ -10,12 +9,12 @@ import UIKit
 import SnapKit
 
 extension UIView {
-    
     public enum GradientDirection {
-        
         case topToBottom
         case leftToRight
-        
+
+        // MARK: Computed Properties
+
         public var startPoint: CGPoint {
             switch self {
             case .topToBottom:
@@ -36,49 +35,48 @@ extension UIView {
     }
     
     public enum ShadowPosition {
-        
         case top(CGFloat)
         case left(CGFloat)
         case bottom(CGFloat)
         case right(CGFloat)
         
         case all(CGFloat)
-        
+
+        // MARK: Computed Properties
+
         var radius: CGFloat {
             switch self {
-            case .top(let value):
+            case let .top(value):
                 value
-            case .left(let value):
+            case let .left(value):
                 value
-            case .bottom(let value):
+            case let .bottom(value):
                 value
-            case .right(let value):
+            case let .right(value):
                 value
-            case .all(let value):
+            case let .all(value):
                 value
             }
         }
         
         var offset: CGSize {
             switch self {
-            case .top(let value):
+            case let .top(value):
                 CGSize(width: 0, height: -value)
-            case .left(let value):
+            case let .left(value):
                 CGSize(width: -value, height: 0)
-            case .bottom(let value):
+            case let .bottom(value):
                 CGSize(width: 0, height: value)
-            case .right(let value):
+            case let .right(value):
                 CGSize(width: value, height: 0)
             case .all:
                 .zero
             }
         }
     }
-    
 }
 
 extension UIView {
-    
     @objc
     open var width: CGFloat {
         frame.size.width
@@ -133,7 +131,9 @@ extension UIView {
     @objc
     open var borderColor: UIColor? {
         get {
-            guard let color = layer.borderColor else { return nil }
+            guard let color = layer.borderColor else {
+                return nil
+            }
             return UIColor(cgColor: color)
         }
         set {
@@ -144,7 +144,9 @@ extension UIView {
     @objc
     open var shadowColor: UIColor? {
         get {
-            guard let color = layer.shadowColor else { return nil }
+            guard let color = layer.shadowColor else {
+                return nil
+            }
             return UIColor(cgColor: color)
         }
         set {
@@ -204,8 +206,12 @@ extension UIView {
 }
 
 extension UIView {
-    
-    public func set(hidden: Bool, animated: Bool = false, duration: TimeInterval = 0.3, completion: ((Bool) -> Void)? = nil) {
+    public func set(
+        hidden: Bool,
+        animated: Bool = false,
+        duration: TimeInterval = 0.3,
+        completion: ((Bool) -> Void)? = nil
+    ) {
         if isHidden == hidden {
             return
         }

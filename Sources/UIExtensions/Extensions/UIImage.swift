@@ -1,21 +1,21 @@
 //
-//  UIImage+.swift
-//  UIExtensions
+//  UIImage.swift
 //
-//  Created by Sun on 2024/8/19.
+//  Created by Sun on 2021/11/24.
 //
 
 import UIKit
 
 extension UIImage {
-    
     public convenience init?(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) {
         let renderer = UIGraphicsImageRenderer(size: size)
         let image = renderer.image { context in
             color.setFill()
             context.fill(CGRect(origin: .zero, size: size))
         }
-        guard let cgImage = image.cgImage else { return nil }
+        guard let cgImage = image.cgImage else {
+            return nil
+        }
         self.init(cgImage: cgImage)
     }
     
@@ -37,7 +37,9 @@ extension UIImage {
             layer.render(in: context.cgContext)
         }
         
-        guard let cgImage = image.cgImage else { return nil }
+        guard let cgImage = image.cgImage else {
+            return nil
+        }
         self.init(cgImage: cgImage)
     }
     
@@ -48,7 +50,7 @@ extension UIImage {
         let rect = CGRect(origin: .zero, size: size)
         let format = UIGraphicsImageRendererFormat.default()
         let renderer = UIGraphicsImageRenderer(size: size, format: format)
-        let image = renderer.image { _ in
+        return renderer.image { _ in
             if let cornerRadius, cornerRadius > 0 {
                 let path = UIBezierPath(
                     roundedRect: rect,
@@ -60,7 +62,6 @@ extension UIImage {
             }
             self.draw(in: rect)
         }
-        return image
     }
     
     public func tint(_ color: UIColor) -> UIImage {

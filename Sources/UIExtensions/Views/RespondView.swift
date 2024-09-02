@@ -1,8 +1,7 @@
 //
 //  RespondView.swift
-//  UIExtensions
 //
-//  Created by Sun on 2024/8/19.
+//  Created by Sun on 2021/11/24.
 //
 
 import UIKit
@@ -18,14 +17,20 @@ public protocol RespondViewDelegate: AnyObject {
 // MARK: - RespondView
 
 public class RespondView: UIView {
-    
+    // MARK: Static Properties
+
     private static let touchableAreaInset: CGFloat = 50
+
+    // MARK: Properties
+
     public weak var delegate: RespondViewDelegate?
 
     public var handleTouch: (() -> Void)?
 
     private var firstTouch: UITouch?
     private var isBegan = false
+
+    // MARK: Computed Properties
 
     private var isValidTouch: Bool {
         guard let touch = firstTouch else {
@@ -35,6 +40,8 @@ public class RespondView: UIView {
         let touchArea = bounds.insetBy(dx: -RespondView.touchableAreaInset, dy: -RespondView.touchableAreaInset)
         return touchArea.contains(touch.location(in: self))
     }
+
+    // MARK: Overridden Functions
 
     override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         delegate?.touchBegan()
@@ -61,6 +68,15 @@ public class RespondView: UIView {
         }
     }
 
+    override open func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        delegate?.touchEnd()
+
+        isBegan = false
+        firstTouch = nil
+
+        super.touchesCancelled(touches, with: event)
+    }
+
     override public func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesMoved(touches, with: event)
 
@@ -74,14 +90,4 @@ public class RespondView: UIView {
             }
         }
     }
-
-    override open func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        delegate?.touchEnd()
-
-        isBegan = false
-        firstTouch = nil
-
-        super.touchesCancelled(touches, with: event)
-    }
-
 }

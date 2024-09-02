@@ -1,14 +1,12 @@
 //
-//  UIWindow+.swift
-//  UIExtensions
+//  UIWindow.swift
 //
-//  Created by Sun on 2024/8/19.
+//  Created by Sun on 2021/11/24.
 //
 
 import UIKit
 
 extension UIWindow {
-
     public func set(newRootController: UIViewController) {
         let transition = CATransition()
         transition.type = CATransitionType.fade
@@ -25,11 +23,9 @@ extension UIWindow {
             oldRootController?.view.removeFromSuperview()
         }
     }
-
 }
 
 extension UIWindow {
-    
     /// Key Window
     public static var keyWindow: UIWindow? {
         let allScenes = UIApplication.shared.connectedScenes

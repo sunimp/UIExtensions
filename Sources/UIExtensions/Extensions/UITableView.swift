@@ -1,14 +1,12 @@
 //
-//  UITableView+.swift
-//  UIExtensions
+//  UITableView.swift
 //
-//  Created by Sun on 2024/8/19.
+//  Created by Sun on 2021/11/24.
 //
 
 import UIKit
 
 extension UITableView {
-
     public func registerCell(forNib nibClass: UITableViewCell.Type) {
         register(
             UINib(nibName: String(describing: nibClass), bundle: Bundle(for: nibClass)),
@@ -46,5 +44,4 @@ extension UITableView {
             }
         }
     }
-
 }

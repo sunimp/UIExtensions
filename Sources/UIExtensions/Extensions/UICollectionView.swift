@@ -1,8 +1,7 @@
 //
-//  UICollectionView+.swift
-//  UIExtensions
+//  UICollectionView.swift
 //
-//  Created by Sun on 2024/8/19.
+//  Created by Sun on 2021/11/24.
 //
 
 import UIKit
@@ -15,7 +14,6 @@ public enum FlowSupplementaryKind {
 }
 
 extension UICollectionView {
-
     public func registerCell(forNib nibClass: UICollectionViewCell.Type) {
         register(
             UINib(nibName: String(describing: nibClass), bundle: Bundle(for: nibClass)),
@@ -80,5 +78,4 @@ extension UICollectionView {
             )
         }
     }
-
 }

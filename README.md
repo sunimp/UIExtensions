@@ -2,13 +2,19 @@
 
 GUI extensions and helpers.
 
+## Requirements
+
+* Xcode 15.4+
+* Swift 5.10+
+* iOS 14.0+
+
 ## Installation
 
 ### Swift Package Manager
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/sunimp/UIExtensions.Swift.git", .upToNextMajor(from: "1.2.0"))
+    .package(url: "https://github.com/sunimp/UIExtensions.Swift.git", .upToNextMajor(from: "1.3.0"))
 ]
 ```
 

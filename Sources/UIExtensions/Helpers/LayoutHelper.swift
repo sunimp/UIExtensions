@@ -1,26 +1,34 @@
 //
 //  LayoutHelper.swift
-//  UIExtensions
 //
-//  Created by Sun on 2024/8/19.
+//  Created by Sun on 2021/11/24.
 //
 
 import UIKit
 
 public class LayoutHelper {
-    
+    // MARK: Static Properties
+
     public static let shared = LayoutHelper()
 
-    private init() { }
-
-    public var contentMarginWidth: CGFloat {
-        marginContentInset * 2 + safeInsets().horizontal
-    }
+    // MARK: Properties
 
     public lazy var marginContentInset: CGFloat = {
         let width = min(UIScreen.main.bounds.width, UIScreen.main.bounds.height)
         return width < 385 || width > 760 ? 15 : 20
     }()
+
+    // MARK: Computed Properties
+
+    public var contentMarginWidth: CGFloat {
+        marginContentInset * 2 + safeInsets().horizontal
+    }
+
+    // MARK: Lifecycle
+
+    private init() { }
+
+    // MARK: Static Functions
 
     public static func sizeForContainer(size: CGSize?) -> CGSize {
         var size = size ?? UIScreen.main.bounds.size
@@ -30,6 +38,8 @@ public class LayoutHelper {
         return size
     }
 
+    // MARK: Functions
+
     public func getSingleMediaSize(
         width: Int,
         height: Int,
@@ -37,7 +47,8 @@ public class LayoutHelper {
         maxHeight: CGFloat = 150,
         minWidth: CGFloat,
         maxWidth: CGFloat
-    ) -> CGSize {
+    )
+        -> CGSize {
         let imageWidth = width > 0 ? CGFloat(abs(width)) / UIScreen.main.scale : minWidth
         let imageHeight = height > 0 ? CGFloat(abs(height)) / UIScreen.main.scale : minHeight
 

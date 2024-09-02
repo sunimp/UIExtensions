@@ -1,14 +1,12 @@
 //
-//  UIColor+.swift
-//  UIExtensions
+//  UIColor.swift
 //
-//  Created by Sun on 2024/8/19.
+//  Created by Sun on 2021/11/24.
 //
 
 import UIKit
 
 extension UIColor {
-
     public var hsbaColor: UIColor {
         var h: CGFloat = 0, s: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
         getHue(&h, saturation: &s, brightness: &b, alpha: &a)
@@ -49,5 +47,4 @@ extension UIColor {
 
         return UIColor(red: min(1, r1), green: min(1, g1), blue: min(1, b1), alpha: a1)
     }
-
 }

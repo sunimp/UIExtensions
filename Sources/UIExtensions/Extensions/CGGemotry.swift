@@ -1,6 +1,5 @@
 //
 //  CGGemotry.swift
-//  UIExtensions
 //
 //  Created by Sun on 2024/8/25.
 //
@@ -8,7 +7,6 @@
 import UIKit
 
 extension CGFloat {
-    
     public var ceiled: CGFloat {
         ceil(self)
     }
@@ -24,11 +22,11 @@ extension CGFloat {
 }
 
 extension CGSize {
-    
     public static func only(
         width: CGFloat = 0.0,
         height: CGFloat = 0.0
-    ) -> CGSize {
+    )
+        -> CGSize {
         CGSize(width: width, height: height)
     }
     
@@ -38,7 +36,6 @@ extension CGSize {
 }
 
 extension CGRect {
-    
     public var flatted: CGRect {
         CGRect(
             x: origin.x.flat,
@@ -67,14 +64,16 @@ extension CGRect {
     public static func size(
         width: CGFloat = 0.0,
         height: CGFloat = 0.0
-    ) -> CGRect {
+    )
+        -> CGRect {
         only(width: width, height: height)
     }
     
     public static func only(
         origin: CGPoint = .zero,
         size: CGSize = .zero
-    ) -> CGRect {
+    )
+        -> CGRect {
         CGRect(origin: origin, size: size)
     }
     
@@ -83,28 +82,27 @@ extension CGRect {
         y: CGFloat = 0.0,
         width: CGFloat = 0.0,
         height: CGFloat = 0.0
-    ) -> CGRect {
+    )
+        -> CGRect {
         CGRect(x: x, y: y, width: width, height: height)
     }
 }
 
 extension CGVector {
-    
     public static func only(
         dx: CGFloat = 0.0,
         dy: CGFloat = 0.0
-    ) -> CGVector {
+    )
+        -> CGVector {
         CGVector(dx: dx, dy: dy)
     }
     
     public static func all(_ value: CGFloat) -> CGVector {
         CGVector(dx: value, dy: value)
     }
-    
 }
 
 extension UIEdgeInsets {
-    
     public var horizontal: CGFloat {
         left + right
     }
@@ -127,14 +125,16 @@ extension UIEdgeInsets {
         left: CGFloat = 0.0,
         bottom: CGFloat = 0.0,
         right: CGFloat = 0.0
-    ) -> UIEdgeInsets {
+    )
+        -> UIEdgeInsets {
         UIEdgeInsets(top: top, left: left, bottom: bottom, right: right)
     }
     
     public static func symmetric(
         vertical: CGFloat = 0.0,
         horizontal: CGFloat = 0.0
-    ) -> UIEdgeInsets {
+    )
+        -> UIEdgeInsets {
         UIEdgeInsets(top: vertical, left: horizontal, bottom: vertical, right: horizontal)
     }
     
@@ -144,7 +144,6 @@ extension UIEdgeInsets {
 }
 
 extension CGRect {
-    
     public func setX(_ x: CGFloat) -> CGRect {
         var rect = self
         rect.origin.x = x.flat

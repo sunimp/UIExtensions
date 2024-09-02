@@ -1,14 +1,12 @@
 //
-//  String+.swift
-//  UIExtensions
+//  String.swift
 //
-//  Created by Sun on 2024/8/19.
+//  Created by Sun on 2021/11/24.
 //
 
 import UIKit
 
 extension String {
-
     public func height(forContainerWidth containerWidth: CGFloat, font: UIFont, roundUp: Bool = true) -> CGFloat {
         size(containerWidth: containerWidth, font: font, roundUp: roundUp).height
     }
@@ -23,7 +21,8 @@ extension String {
         font: UIFont,
         maxLines: Int = 0,
         roundUp: Bool = true
-    ) -> CGSize {
+    )
+        -> CGSize {
         guard !isEmpty else {
             return .zero
         }

@@ -1,14 +1,12 @@
 //
-//  DateFormatter+.swift
-//  UIExtensions
+//  DateFormatter.swift
 //
-//  Created by Sun on 2024/8/19.
+//  Created by Sun on 2021/11/24.
 //
 
 import Foundation
 
 extension DateFormatter {
-
     public static var amPmEnabled: Bool {
         guard let dateFormat = DateFormatter.dateFormat(fromTemplate: "j", options: 0, locale: Locale.current) else {
             return false
@@ -16,5 +14,4 @@ extension DateFormatter {
 
         return dateFormat.contains("a")
     }
-
 }

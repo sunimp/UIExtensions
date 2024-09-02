@@ -1,20 +1,22 @@
 //
 //  GradientView.swift
-//  UIExtensions
 //
-//  Created by Sun on 2024/8/19.
+//  Created by Sun on 2021/11/24.
 //
 
 import UIKit
 
 open class GradientView: UIView {
-    
+    // MARK: Properties
+
     public let gradientLayer = CAGradientLayer()
 
     private var fromColor: UIColor
     private var toColor: UIColor
     private var direction: GradientDirection
     private var length: CGFloat?
+
+    // MARK: Lifecycle
 
     public init(
         fromColor: UIColor,
@@ -41,6 +43,8 @@ open class GradientView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: Overridden Functions
+
     override public func layoutSubviews() {
         super.layoutSubviews()
         
@@ -63,6 +67,8 @@ open class GradientView: UIView {
 
         updateUITheme()
     }
+
+    // MARK: Functions
 
     open func updateUITheme() {
         gradientLayer.colors = [fromColor.cgColor, toColor.cgColor]

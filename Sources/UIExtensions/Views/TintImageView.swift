@@ -1,20 +1,14 @@
 //
 //  TintImageView.swift
-//  UIExtensions
 //
-//  Created by Sun on 2024/8/19.
+//  Created by Sun on 2021/11/24.
 //
 
 import UIKit
 
 public class TintImageView: UIImageView, RespondViewDelegate {
-    
-    public var touchTransparent: Bool { false }
+    // MARK: Overridden Properties
 
-    private var _tintColor: UIColor?
-    private var selectedTintColor: UIColor?
-    private var isTintMode = false
-    
     override public var tintColor: UIColor! {
         get {
             super.tintColor
@@ -38,6 +32,18 @@ public class TintImageView: UIImageView, RespondViewDelegate {
         }
     }
 
+    // MARK: Properties
+
+    private var _tintColor: UIColor?
+    private var selectedTintColor: UIColor?
+    private var isTintMode = false
+
+    // MARK: Computed Properties
+
+    public var touchTransparent: Bool { false }
+
+    // MARK: Lifecycle
+
     public init() {
         super.init(frame: .zero)
     }
@@ -58,6 +64,8 @@ public class TintImageView: UIImageView, RespondViewDelegate {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: Functions
+
     public func touchBegan() {
         if highlightedImage != nil {
             isHighlighted = true
@@ -71,5 +79,4 @@ public class TintImageView: UIImageView, RespondViewDelegate {
         isHighlighted = false
         tintColor = _tintColor
     }
-
 }

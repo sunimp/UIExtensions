@@ -1,14 +1,12 @@
 //
-//  UIButton+.swift
-//  UIExtensions
+//  UIButton.swift
 //
-//  Created by Sun on 2024/8/19.
+//  Created by Sun on 2021/11/24.
 //
 
 import UIKit
 
 extension UIButton {
-    
     public func setBackgroundColor(
         _ color: UIColor,
         gradient: (colors: [UIColor], direction: UIView.GradientDirection)? = nil,
@@ -34,4 +32,3 @@ extension UIButton {
         setBackgroundImage(colorImage, for: state)
     }
 }
-
