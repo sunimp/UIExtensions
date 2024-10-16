@@ -1,4 +1,4 @@
-# UIExtensions.Swift
+# UIExtensions
 
 GUI extensions and helpers.
 
@@ -20,4 +20,4 @@ dependencies: [
 
 ## License
 
-`UIExtensions.Swift` is available under the MIT license. See the LICENSE file for more info.
+`UIExtensions` is available under the MIT license. See the LICENSE file for more info.
