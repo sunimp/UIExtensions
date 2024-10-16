@@ -15,7 +15,7 @@ let package = Package(
         ],
         dependencies: [
             .package(url: "https://github.com/SnapKit/SnapKit.git", from: "5.7.1"),
-            .package(url: "https://github.com/nicklockwood/SwiftFormat.git", from: "0.54.3"),
+            .package(url: "https://github.com/nicklockwood/SwiftFormat.git", from: "0.54.6"),
         ],
         targets: [
             .target(
